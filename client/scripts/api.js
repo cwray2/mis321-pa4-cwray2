@@ -8,7 +8,8 @@ function populateList() {
         return response.json();
     }).then(function(json) {
         songList = json;
-        let html = "<select class = \"listBox\" onChange = \"handleOnChange()\" id = \"selectListBox\" name = \"list_box\" size=5 width = \"100%\">";
+        //let html = "<select class = \"listBox\" onChange = \"handleOnChange()\" id = \"selectListBox\" name = \"list_box\" size=5 width = \"100%\">";
+        let html = '<div class="card col-md-4 bg-dark text-white"><img src="./images/music.jpeg" class="card-img" alt="..."><div class="card-img-overlay"><h5 class="card-title">'+song.songTitle+'</h5><button id='+song.songID+' class="unliked-button" onclick="likeSongs(id)">🍆💦</button><button id='+song.songID+' onclick="deleteSongs(id)">🗑️</button></div></div>';
         json.forEach((song) => {
             html += "<option value = " + song.songID + ">" + song.songTitle + "</option>";
         })

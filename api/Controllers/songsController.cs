@@ -54,14 +54,25 @@ namespace api.Controllers
         // PUT: api/songs/5
         [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Song sendSong)
+        public void Put(int id)
         {
             //DBRead readObject = new DBRead();
+            DBRead readObject = new DBRead();
+            Song song = readObject.GetOne(id);
+            if(song.Favorited == "y")
+            {
+                song.Favorited = "n";
+            }
+            else
+            {
+                song.Favorited = "y";
+            }
+
             DBUpdate updateObject = new DBUpdate();
 
             //Song song = readObject.GetOne(id);
 
-            updateObject.Update(id, sendSong);
+            updateObject.Update(song);
         }
 
         // DELETE: api/songs/5

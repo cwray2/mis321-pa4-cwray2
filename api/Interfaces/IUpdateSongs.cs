@@ -4,6 +4,6 @@ namespace api.Interfaces
 {
     public interface IUpdateSongs
     {
-         public void Update(int id, Song sendSong);
+         public void Update(Song sendSong);
     }
 }
